@@ -5,7 +5,8 @@ Predicts whether a loan application will be approved or rejected, using a Random
 ## Features
 
 - Trained on applicant financial data: income, loan amount/term, CIBIL score, dependents, education, employment status, and asset values
-- 11-feature Random Forest pipeline (StandardScaler + RandomForestClassifier, 200 trees)
+- Compared three models — Logistic Regression, XGBoost, and Random Forest — via cross-validation and parameter tuning
+- **Random Forest (200 trees) was selected as the best performer** and is what's deployed in the app
 - Interactive Streamlit UI — enter applicant details and get an instant Approved/Rejected prediction
 - Prediction interface validated end-to-end against the trained pipeline's exact expected feature schema and encoding directions
 
