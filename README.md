@@ -1,37 +1,92 @@
-# Loan Approval Prediction
+# 🚀 Loan Approval Prediction
 
-Predicts whether a loan application will be approved or rejected, using a Random Forest classifier served through a Streamlit app.
+Predict whether a loan application will be approved from the applicant's financial profile.
 
-## Features
+## 📌 Overview
 
-- Trained on applicant financial data: income, loan amount/term, CIBIL score, dependents, education, employment status, and asset values
-- Compared three models — Logistic Regression, XGBoost, and Random Forest — via cross-validation and parameter tuning
-- **Random Forest (200 trees) was selected as the best performer** and is what's deployed in the app
-- Interactive Streamlit UI — enter applicant details and get an instant Approved/Rejected prediction
-- Prediction interface validated end-to-end against the trained pipeline's exact expected feature schema and encoding directions
+A classification project that learns from historical loan applications (income, loan amount and term, CIBIL score, dependents, education, employment, and asset values). Logistic Regression, XGBoost, and Random Forest were trained and compared; Random Forest performed best and is served through a Streamlit app.
 
-## Tech Stack
+## ✨ Features
 
-![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
-![Streamlit](https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)
+* 11 input features covering income, loan details, credit score, and assets
+* Compared Logistic Regression, XGBoost, and Random Forest using cross-validation and parameter tuning
+* Deployed model: StandardScaler + RandomForestClassifier (200 trees) in a single pipeline
+* Streamlit app that returns Approved / Rejected for the entered details
 
-## Project Structure
+## 🛠️ Tech Stack
+
+* Language: Python
+* Libraries: Pandas, NumPy, Scikit-learn, XGBoost (model comparison), Matplotlib, Plotly, Streamlit
+* Tools: Git, GitHub, Jupyter Notebook
+
+## 📂 Project Structure
 
 ```
-loanapprovalproject.ipynb   # EDA, preprocessing, model training
-app1.py                     # Streamlit app — loads loan_pipeline.joblib and serves predictions
-loan_approval_dataset.csv   # Training dataset
-loan_pipeline.joblib        # Trained StandardScaler + RandomForestClassifier pipeline
+loan-approval-prediction/
+├── loan_approval_dataset.csv     # dataset
+├── loanapprovalproject .ipynb    # EDA, preprocessing, model comparison
+├── app1.py                       # Streamlit app
+├── loan_pipeline.joblib          # trained scaler + Random Forest pipeline
+├── requirements.txt
+└── LICENSE
 ```
 
-## Getting Started
+## ⚙️ Installation
 
-```bash
+1. Clone the repository:
+
+```
+git clone https://github.com/JAIMINRSOJITRA/loan-approval-prediction.git
+```
+
+2. Navigate to the project:
+
+```
+cd loan-approval-prediction
+```
+
+3. Install dependencies:
+
+```
 pip install -r requirements.txt
+```
+
+## ▶️ Usage
+
+```
 streamlit run app1.py
 ```
 
-## Input Features
+Enter the applicant details and the app shows the predicted decision. Encoding used throughout: Graduate = 1, Self-employed Yes = 1, Approved = 1.
 
-`no_of_dependents`, `education`, `self_employed`, `income_annum`, `loan_amount`, `loan_term`, `cibil_score`, `residential_assets_value`, `commercial_assets_value`, `luxury_assets_value`, `bank_asset_value`
+## 📊 Results / Demo
+
+* The app's input columns match the trained pipeline's expected 11 features, and the categorical encodings match training exactly.
+* See the notebook for the model-comparison scores.
+
+## 🧠 What I Learned
+
+* Comparing several classifiers fairly and choosing one based on evidence
+* Keeping categorical encodings consistent between training and inference
+* Wrapping preprocessing and the model in one pipeline
+
+## 🔮 Future Improvements
+
+* Add feature-importance and explanation output for each decision
+* Check the model for bias across applicant groups
+* Deploy the app publicly
+
+## 🤝 Contributing
+
+Contributions, issues, and suggestions are welcome.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+Jaimin Sojitra
+
+* GitHub: https://github.com/JAIMINRSOJITRA
+* LinkedIn: https://www.linkedin.com/in/jaimin-sojitra-4683a1277/
