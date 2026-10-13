@@ -13,6 +13,30 @@ A classification project that learns from historical loan applications (income, 
 * Deployed model: StandardScaler + RandomForestClassifier (200 trees) in a single pipeline
 * Streamlit app that returns Approved / Rejected for the entered details
 
+## 🔄 Workflow
+
+Training (in the notebook):
+
+```mermaid
+flowchart TD
+    D[("loan_approval_dataset.csv")] --> C["Clean the data"]
+    C --> E["Encode categories<br/>education, self_employed, loan_status"]
+    E --> S["Train / test split"]
+    S --> M["Train and compare with cross-validation<br/>Logistic Regression, XGBoost, Random Forest"]
+    M --> P["Select Random Forest<br/>StandardScaler + RandomForest, 200 trees"]
+    P --> J[("loan_pipeline.joblib")]
+```
+
+Prediction (in the Streamlit app):
+
+```mermaid
+flowchart TD
+    U(["Applicant details entered"]) --> DF["Build a one-row table with the 11 features"]
+    DF --> L["Load loan_pipeline.joblib"]
+    L --> PR["Scale the features and predict"]
+    PR --> O(["Approved or Rejected"])
+```
+
 ## 🛠️ Tech Stack
 
 * Language: Python
